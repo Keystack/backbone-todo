@@ -1,27 +1,30 @@
-
-
-/**
-  *
-  *
-  *
-  */
-
 let Todo = Backbone.Model.extend({
-	initialize : function(props){
-		console.log(props);
-		console.log(this);
-	},
+	
+  initialize : function(props){
+  },
 
-	defaults : function() {
-      return {
-        title: "New Todo item",
-        complete: false
-      };
-    },
+  defaults : function() {
+    return {
+      name: "New todo item",
+      order : App.todos.nextOrder,
+      complete: false
+    };
+  },
 
-    toggle : function(){
-    	this.set({complete:!this.get('complete')});
-    }
+  toggle : function(){
+  	this.set({
+      complete:!this.get('complete')
+    });
+  }
 });
 
-
+let SpecialTodo = Todo.extend({
+  
+  defaults : function() {
+    return {
+      name: "Special todo Item",
+      order : App.todos.nextOrder,
+      complete: false
+    };
+  }
+});
